@@ -15,4 +15,10 @@ public class PurchaseController : AppControllerBase
         var apiResult = response.ToApiResult();
         return StatusCode(apiResult.StatusCode, apiResult);
     }
+
+    [HttpGet]
+    public string hello()
+    {
+        return $"Hello";
+    }
 }

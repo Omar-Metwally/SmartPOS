@@ -22,21 +22,21 @@ public class BranchCommandHandler(IBranchRepository branchRepository, IUnitOfWor
             return new Result<int>()
                 .WithBadRequest("");
 
-        return new Result(5);
-        //var branchToBeCreatedResult = Branch.Create(request.Name);
-        //if (branchToBeCreatedResult.IsFailed)
-        //    return branchToBeCreatedResult;
+        //return new Result(5);
+        var branchToBeCreatedResult = Branch.Create(request.Name);
+        if (branchToBeCreatedResult.IsFailed)
+            return branchToBeCreatedResult;
 
-        //var branch = branchToBeCreatedResult.Value as Branch;
+        var branch = branchToBeCreatedResult.Value;
 
-        //await _branchRepository.Add(branch, cancellationToken);
+        await _branchRepository.Add(branch, cancellationToken);
 
-        //await branchToBeCreatedResult
-        //    .WithTask(() => _unitOfWork.SaveChangesAsync(cancellationToken), "Database Error");
-        //if (branchToBeCreatedResult.IsFailed)
-        //    return branchToBeCreatedResult;
+        await branchToBeCreatedResult
+            .WithTask(() => _unitOfWork.SaveChangesAsync(cancellationToken), "Database Error");
+        if (branchToBeCreatedResult.IsFailed)
+            return branchToBeCreatedResult;
 
-        //return branchToBeCreatedResult;
+        return branchToBeCreatedResult;
 
     }
 

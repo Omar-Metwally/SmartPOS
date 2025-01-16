@@ -17,9 +17,8 @@ public class Branch : Entity, IAggregateRoot
         Name = name;
     }
 
-    public static IResult Create(string name)
+    public static IResult<Branch> Create(string name)
     {
-        new Branch(name);
-        return new Result();
+        return new Result<Branch>(new Branch(name));
     }
 }

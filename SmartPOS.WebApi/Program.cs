@@ -14,6 +14,8 @@ builder.Services
     .AddCoreDependencies(builder.Configuration)
     .AddInfrastructureDependencies(builder.Configuration);
 
+builder.Services.AddCors();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -25,6 +27,12 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(x => x
+    .SetIsOriginAllowed(origin => true)
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials());
 
 app.MapControllers();
 

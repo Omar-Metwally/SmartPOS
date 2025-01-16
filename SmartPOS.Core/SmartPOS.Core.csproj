@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Branches\Queries\Models\" />
+    <Folder Include="Features\Branches\Queries\Handlers\" />
+    <Folder Include="Features\Branches\Queries\Responses\" />
     <Folder Include="Features\Purchase\Commands\Validators\" />
   </ItemGroup>
 

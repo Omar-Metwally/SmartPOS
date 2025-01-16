@@ -7,7 +7,7 @@ public class AddBranchCommandValidator : AbstractValidator<AddBranchCommandModel
 {
     public AddBranchCommandValidator()
     {
-        RuleFor(c => c.Name).NotEmpty().WithMessage("Name Is Requrired");
+        RuleFor(c => c.Name).NotEmpty().WithMessage("Name Is Required");
 
     }
 }
